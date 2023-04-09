@@ -5,33 +5,20 @@
 // a = 2; b = 10 -> max = 10
 // a = -9; b = -3 -> max = -3
 
-Console.WriteLine("Введите два неравных друг другу целых числа");
-if (int.TryParse(Console.ReadLine(), out var firstNumber))
+int max = 0;
+int min = 0;
+Console.Write("Введите первое число: ");
+int numberA = Convert.ToInt32(Console.ReadLine());
+Console.Write("Введите второе число: ");
+int numberB = Convert.ToInt32(Console.ReadLine());
+if (numberA > numberB)
 {
-    Console.WriteLine($"Хорошо, ваше число {firstNumber}");
+    max = numberA;
+    min = numberB;
 }
 else
 {
-    Console.WriteLine("Ввод не является целым числом");
+    max = numberA;
+    min = numberB;
 }
-if (int.TryParse(Console.ReadLine(), out var secondNumber))
-{
-    Console.WriteLine($"Отлично, ваше число {secondNumber}");
-}
-else
-{
-    Console.WriteLine("Ввод не является целым числом");
-}
-
-if (firstNumber > secondNumber)
-{
-    Console.WriteLine($"Большее число {firstNumber}, меньшее число {secondNumber}");
-}
-else if (secondNumber > firstNumber)
-{
-    Console.WriteLine($"Большее число {secondNumber}, меньшее число {firstNumber}");
-}
-else
-{
-    Console.WriteLine("Введены некорректные или равные значения, попробуйте еще разок");
-}
+Console.WriteLine("max = " + max + " и " + "min = " + min);
