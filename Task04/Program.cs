@@ -4,29 +4,23 @@
 // 44, 5, 78 -> 78
 // 22, 3, 9 -> 22
 
-
 int max = 0;
-
 Console.Write("Введите первое число: ");
-int firstNumber = Convert.ToInt32(Console.ReadLine());
-
+int numberA = Convert.ToInt32(Console.ReadLine());
 Console.Write("Введите второе число: ");
-int secondNumber = Convert.ToInt32(Console.ReadLine());
-
+int numberB = Convert.ToInt32(Console.ReadLine());
 Console.Write("Введите третье число: ");
-int thirdNumber = Convert.ToInt32(Console.ReadLine());
-
-if(firstNumber > max)
+int numberC = Convert.ToInt32(Console.ReadLine());
+if(numberA > max)
 {
-    max = firstNumber;
+    max = numberA;
 }
-if(secondNumber > max)
+if(numberB > max)
 {
-    max = secondNumber;
+    max = numberB;
 }
-if(thirdNumber > max)
+if(numberC > max)
 {
-    max = thirdNumber;
+    max = numberC;
 }
-
 Console.WriteLine("max = " + max);
