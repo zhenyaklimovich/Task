@@ -21,8 +21,8 @@ int number = new Random().Next(100, 1000);
 Console.WriteLine($"Случайное число из отрезка 100 - 999 -> {number}");
 int DeleteCentr (int num)
 {
-int first = number / 100;
-int third = number % 10;
+int first = num / 100;
+int third = num % 10;
 int answer = first * 10 + third;
 return answer;
 }
