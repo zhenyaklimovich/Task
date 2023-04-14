@@ -25,11 +25,9 @@
 
 Console.WriteLine("Введите трехзначное число: ");
 int number = Convert.ToInt32(Console.ReadLine());
-if (number < 100 || number >= 1000)
-Console. WriteLine ($"Введенное число `{number}`");
+
 {
 Console.WriteLine ("Вы ввели не трехзначное число, пожалуйста повторите ввод");
-return;
 }
 
 Console. WriteLine ($"Введенное число `{number}`");
