@@ -19,42 +19,29 @@ for (int i = 0; i < arr.Length; i++)
 {
 double round = Math.Round(arr[i], 1);
 if(i < arr.Length - 1) Console.Write($"{round}, ");
-else Console.Write($"{round}");
+else Console.WriteLine($"{round}");
 }
 }
-double[] array = CreateArrayRndDouble(12, -9, 9);
-
-Console.WriteLine("Введите размер массива");
-int size = Convert.ToInt32(Console.ReadLine());
-double[] numbers = new double[size];
-FillArrayRandomNumbers(numbers);
-Console.WriteLine("В массиве: ");
-PrintArray(numbers);
+double[] array = CreateArrayRndDouble(5, 1, 100);
+PrintArray(array);
 
 double min = Int32.MaxValue;
 double max = Int32.MinValue;
 
-for (int n = 0; n < numbers.Length; n++)
+for (int i = 0; i < array.Length; i++)
 {
-    if (numbers[n] > max)
+    if (array[i] > max)
         {
-            max = numbers[n];
+            max = array[i];
         }
-    if (numbers[n] < min)
+    if (array[i] < min)
         {
-            min = numbers[n];
+            min = array[i];
         }
 }
 
-Console.WriteLine($" - {numbers.Length} элементов. Максимальное значение = {max}, минимальное значение = {min}");
 double round = Math.Round(max - min, 1);
 Console.WriteLine($"Разница между максимальным и минимальным значением = {round}");
 
-void FillArrayRandomNumbers(double[] numbers)
-{
-    for(int i = 0; i < numbers.Length; i++)
-        {
-            numbers[i] = Convert.ToDouble(new Random().Next(100,1000)) / 10;
-        }
-}
+
 
