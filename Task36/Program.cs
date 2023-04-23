@@ -17,7 +17,7 @@ return arr;
 
 int[] array = CreateArrayRndInt(5, 99, 1000);
 
-int temp = 0;
+int sumOddElements = 0;
 
 WriteArray(array);
 
@@ -25,11 +25,11 @@ for(int i = 0; i < array.Length; i++)
 {
     if(i % 2 != 0)
     {
-        temp += array[i];
+        sumOddElements += array[i];
     }
     else continue;
 }
-Console.WriteLine($"Sum odd count: {temp}");
+Console.WriteLine($"Сумма элементов, стоящих на нечётных позициях: {sumOddElements}");
 
 
 void WriteArray(int[] array)
