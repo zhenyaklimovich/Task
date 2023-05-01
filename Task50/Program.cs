@@ -26,7 +26,7 @@ matrix[i, j] = rnd.Next(min, max + 1);
 return matrix;
 }
 
-void SearchMatrix(int[,] matrix, int rows, int columns) // Поиск элемента в матрице.
+void SearchMatrix(int[,] matrix, int rows, int columns) 
 {
   bool flag = false;
   for (int i = 0; i < matrix.GetLength(0); i++)
