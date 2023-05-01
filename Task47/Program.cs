@@ -30,7 +30,6 @@ for (int j = 0; j < matrix.GetLength(1); j++)
 double round = Math.Round( matrix[i, j], 1);
 if(i < matrix.GetLength(1) - 1) Console.Write($"{round, 5}  ");
 else Console.WriteLine($"{round, 5}");  
-// Console.Write($"{matrix[i, j], 5} ");
 }
 Console.WriteLine("  |");
 }
