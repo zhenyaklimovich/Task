@@ -39,32 +39,30 @@ Console.WriteLine(" |");
 int[,] array2d = CreateMatrixRndInt(3, 4, -100, 100);
 PrintMatrix(array2d);
 
-
-
-
-
-WriteLine("Введите номер строки");
-int n = Convert.ToInt32(ReadLine());
-WriteLine("Введите номер столбца");
-int m = Convert.ToInt32(ReadLine());
-
-FillArrayRandomNumbers(array2d);
+void SearchMatrix(int[,] matrix, int rows, int columns) // Поиск элемента в матрице.
 {
-    if (n > array2d.GetLength(0) || m > array2d.GetLength(1))
-{
-    WriteLine("Такого элемента нет");
-}
-else
-{
-    WriteLine($"Значение элемента {n} строки и {m} столбца равно {array2d[n-1,m-1]}");
-}
-if (n > array2d.GetLength(0) || m > array2d.GetLength(1))
-{
-    WriteLine("Такого элемента нет");
-}
-else
-{
-    WriteLine($"Значение элемента {n} строки и {m} столбца равно {array2d[n-1,m-1]}");
+  bool flag = false;
+  for (int i = 0; i < matrix.GetLength(0); i++)
+  {
+    for (int j = 0; j < matrix.GetLength(1); j++)
+    {
+      if (i == rows && j == columns)
+      {
+        Console.WriteLine($"Искомый элемент: {matrix[rows, columns]}");
+        flag = true;
+        break;
+      }
+    }
+  }
+  if (!flag)
+  {
+    Console.WriteLine("Такого элемента не существует!");
+  }
 }
 
-PrintArray(array2d);
+Console.Write("Введите номер строки элемента матрицы: ");
+int rows = Convert.ToInt32(Console.ReadLine());
+Console.Write("Введите номер столбца элемента матрицы: ");
+int columns = Convert.ToInt32(Console.ReadLine());
+
+SearchMatrix(array2d, rows, columns);
