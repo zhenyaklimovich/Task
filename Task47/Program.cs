@@ -7,12 +7,12 @@
 double[,] CreateMatrixDouble(int rows, int columns, int min, int max)
 
 {
-double[,] matrix = new double[rows, columns]; // 3, 4
+double[,] matrix = new double[rows, columns];
 Random rnd = new Random();
 
-for (int i = 0; i < matrix.GetLength(0); i++) //matrix.GetLength(0) = 3
+for (int i = 0; i < matrix.GetLength(0); i++) 
 {
-for (int j = 0; j < matrix.GetLength(1); j++) // matrix.GetLength(1) = 4
+for (int j = 0; j < matrix.GetLength(1); j++) 
 {
 matrix[i, j] = rnd.NextDouble() * (max - min) + min;
 }
