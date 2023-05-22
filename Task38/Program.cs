@@ -1,47 +1,63 @@
-﻿// Задайте массив вещественных чисел. Найдите разницу между максимальным и минимальным элементов массива.
-// [3.5, 7.1, 22.9, 2.3, 78.5] -> 76.2
+﻿Console.WriteLine("Введите значение элемента: ");
+int value = int.Parse(Console.ReadLine() ?? "");
 
-double[] CreateArrayRndDouble(int size, int min, int max)
+int GetNumber(string message)
 {
-double[] arr = new double[size];
-Random rnd = new Random();
+    Console.WriteLine(message);
+    bool isCorrect = false;
+    int result = 0;
+    while (!isCorrect)
+        if (int.TryParse(Console.ReadLine(), out result))
+            isCorrect = true;
+        else
+            Console.WriteLine("Введено не число. Повторите ввод.");
 
-for (int i = 0; i < arr.Length; i++)
-{
-arr[i] = rnd.NextDouble() * (max - min) + min;
+    return result;
 }
-return arr;
-}
 
-void PrintArray (double[] arr)
+int[,] InitArray(int m, int n)
 {
-for (int i = 0; i < arr.Length; i++)
-{
-double round = Math.Round(arr[i], 1);
-if(i < arr.Length - 1) Console.Write($"{round}, ");
-else Console.WriteLine($"{round}");
-}
-}
-double[] array = CreateArrayRndDouble(5, 1, 100);
-PrintArray(array);
-
-double min = Int32.MaxValue;
-double max = Int32.MinValue;
-
-for (int i = 0; i < array.Length; i++)
-{
-    if (array[i] > max)
+    int[,] newArray = new int[m, n];
+    Random rnd = new Random();
+    for (int i = 0; i < m; i++)
+    {
+        for (int j = 0; j < n; j++)
         {
-            max = array[i];
+            newArray[i, j] = rnd.Next(0, 10);
         }
-    if (array[i] < min)
+    }
+    return newArray;
+}
+int FindElement(int[,] matrix)
+{
+      for (int i = 0; i < matrix.GetLength(0); i++)
+    {
+        for (int j = 0; j < matrix.GetLength(1); j++)
         {
-            min = array[i];
+            if (matrix[i,j] == value)
+            {
+                Console.WriteLine($"Элемент матрицы с индексами ({i};{j}) равен заданному эллементу");
+            }
         }
+
+    }
+    return value;
 }
 
-double round = Math.Round(max - min, 1);
-Console.WriteLine($"Разница между максимальным и минимальным значением = {round}");
+void PrintMatrix(int[,] matrix)
+{
+    for (int i = 0; i < matrix.GetLength(0); i++)
+    {
+        for (int j = 0; j < matrix.GetLength(1); j++)
+        {
+            Console.Write($"{matrix[i, j]} ");
+        }
+        Console.WriteLine();
+    }
+}
 
-
-
+int row = GetNumber("Введите количество строк: ");
+int column = GetNumber("Введите количество столбцов: ");
+int[,] matrix = InitArray(row, column);
+PrintMatrix(matrix);
+FindElement(matrix);
