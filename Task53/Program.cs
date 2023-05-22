@@ -1,63 +1,48 @@
-﻿Console.Clear();
-Console.WriteLine($"Задача 54: Задайте двумерный массив. Напишите программу, которая упорядочит по убыванию элементы каждой строки двумерного массива.");
-Console.WriteLine($"\nВведите размер массива m x n и диапазон случайных значений:");
-int m = InputNumbers("Введите m: ");
-int n = InputNumbers("Введите n: ");
-int range = InputNumbers("Введите диапазон: от 1 до ");
+﻿// Задача 53: Задайте двумерный массив. Напишите программу,
+// которая поменяет местами первую и последнюю строку
+// массива.
 
-int[,] array = new int[m, n];
-CreateArray(array);
-WriteArray(array);
-
-Console.WriteLine($"\nОтсортированный массив: ");
-OrderArrayLines(array);
-WriteArray(array);
-
-void OrderArrayLines(int[,] array)
+ int[,] CreateMatrixRndInt(int rows, int columns, int min, int max)
 {
-  for (int i = 0; i < array.GetLength(0); i++)
-  {
-    for (int j = 0; j < array.GetLength(1); j++)
-    {
-      for (int k = 0; k < array.GetLength(1) - 1; k++)
-      {
-        if (array[i, k] < array[i, k + 1])
-        {
-          int temp = array[i, k + 1];
-          array[i, k + 1] = array[i, k];
-          array[i, k] = temp;
-        }
-      }
-    }
-  }
+int[,] matrix = new int[rows, columns];
+Random rnd = new Random();
+
+for (int i = 0; i < matrix.GetLength(0); i++)
+{
+for (int j = 0; j < matrix.GetLength(1); j++)
+{
+matrix[i, j] = rnd.Next(min, max + 1);
+}
+}
+return matrix;
 }
 
-int InputNumbers(string input)
+void PrintMatrix(int[,] matrix)
 {
-  Console.Write(input);
-  int output = Convert.ToInt32(Console.ReadLine());
-  return output;
+for (int i = 0; i < matrix.GetLength(0); i++)
+{
+for (int j = 0; j < matrix.GetLength(1); j++)
+{
+Console.Write($"{matrix[i, j],5} ");
+}
+Console.WriteLine();
+}
 }
 
-void CreateArray(int[,] array)
+void SwapPosition(int[,] matrix)
 {
-  for (int i = 0; i < array.GetLength(0); i++)
-  {
-    for (int j = 0; j < array.GetLength(1); j++)
-    {
-      array[i, j] = new Random().Next(range);
-    }
-  }
-}
-
-void WriteArray(int[,] array)
+int lastPosition = matrix.GetLength(0) - 1;
+int firstPosition = 0;
+int temp = 0;
+for (int j = 0; j < matrix.GetLength(1); j++)
 {
-  for (int i = 0; i < array.GetLength(0); i++)
-  {
-    for (int j = 0; j < array.GetLength(1); j++)
-    {
-      Console.Write(array[i, j] + " ");
-    }
-    Console.WriteLine();
-  }
+temp=matrix[firstPosition, j];
+matrix[firstPosition, j] = matrix[lastPosition, j];
+matrix[lastPosition, j] = temp;
 }
+}
+int[,] matrix = CreateMatrixRndInt(4, 3, -10, 10);
+PrintMatrix(matrix);
+Console.WriteLine();
+SwapPosition(matrix);
+PrintMatrix(matrix);
